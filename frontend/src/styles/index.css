@@ -12,8 +12,6 @@
 }
 
 html {
-  -webkit-text-size-adjust: 100%;
-  -moz-tab-size: 4;
   tab-size: 4;
   font-family:
     Pretendard,
@@ -30,8 +28,6 @@ html {
     'Segoe UI Emoji',
     'Segoe UI Symbol',
     sans-serif;
-  font-feature-settings: normal;
-  font-variation-settings: normal;
 }
 
 body {
