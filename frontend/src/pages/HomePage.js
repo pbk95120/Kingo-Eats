@@ -1,5 +1,6 @@
 import TestComponent from '../components/Test/TestComponenet';
 import Title from '../components/common/Title';
+import Nav from '../components/Nav';
 
 const HomePage = () => {
   return (
@@ -8,6 +9,7 @@ const HomePage = () => {
         <Title title="주문내역" />
         <TestComponent />
       </section>
+      <Nav />
     </main>
   );
 };
