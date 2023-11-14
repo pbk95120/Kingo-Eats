@@ -10,5 +10,5 @@ function App() {
     </BrowserRouter>
   );
 }
-
+// 안돼
 export default App;
