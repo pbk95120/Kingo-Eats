@@ -7,7 +7,8 @@ const Login = () => {
     var id = document.getElementById('kingoId');
     var pwd = document.getElementById('password');
     if(id.value === "Team11" && pwd.value==="12345"){
-        navigate('/restaurant');
+      var username = "율전이";
+        navigate('/restaurant',{state:username});
     }
     else
     {

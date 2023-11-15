@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
-
+import { useLocation } from "react-router-dom";
 
 const Restaurant = () => {
   const [rest,setRest] = useState("구시재식당");
   const [rimage, setRimage] = useState("./images/res1.svg");
   const [restLoc,setRestLoc] = useState("학생회관 1층");
   const navigate = useNavigate();
-
+  const {state} = useLocation();
   const onSelect = (event) => {
     setRest(event.target.value);
 };
@@ -33,7 +33,7 @@ const Restaurant = () => {
       <section>
         <div className="items-center" style={{textAlign:"center"}}>
             <h1 style={{fontSize:"35px", fontWeight:"bolder", color:"#4CAF50"}} >Kingo-Eats</h1>
-            <h4 style={{marginTop:"10px",fontSize:"25px"}}>안녕하세요 OOO님<br/> 어떤 식당을 원하시나요?</h4>
+            <h4 style={{marginTop:"10px",fontSize:"25px"}}>안녕하세요 {state}님<br/> 어떤 식당을 원하시나요?</h4>
             <select style={{ marginTop:"10px",fontSize:"20px",minWidth:"75%", minHeight:"30px", textAlign:"center", color:"#4CAF50" , border:"1px solid lightgreen", borderRadius:"5px"}} value={rest} onChange={onSelect} name="rest" >
                     <option value="구시재식당" >구시재식당</option>
                     <option value="학생회관식당">학생회관식당</option>
