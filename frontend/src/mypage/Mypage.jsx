@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BiArrowBack, BiSolidEditAlt } from 'react-icons/bi';
+import Btn from '../components/common/Btn';
 
 export default function Mypage() {
   const user = {
@@ -22,12 +23,7 @@ export default function Mypage() {
           className="w-[128px] h-[128px] rounded-full"
         />
         <span>{user.userinfo}</span>
-        <button
-          className="w-[343px] h-[52px] bg-green hover:shadow-md text-white font-bold rounded border-2 border-black mb-[2vh]"
-          onClick={() => navigate('qr')}
-        >
-          식권 QR
-        </button>
+        <Btn text={'식권 QR'} url={'/mypage/qr'} />
         <button
           className="w-[343px] h-[52px] bg-blue-500 hover:shadow-md text-white font-bold rounded border-2 border-black mb-[2vh]"
           onClick={() => navigate('menulist')}
