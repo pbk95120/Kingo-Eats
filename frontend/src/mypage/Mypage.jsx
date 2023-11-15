@@ -23,7 +23,7 @@ export default function Mypage() {
           className="w-[128px] h-[128px] rounded-full"
         />
         <span>{user.userinfo}</span>
-        <Btn text={'식권 QR'} url={'/mypage/qr'} />
+        <Btn text="식권 QR" url="/mypage/qr" />
         <button
           className="w-[343px] h-[52px] bg-blue-500 hover:shadow-md text-white font-bold rounded border-2 border-black mb-[2vh]"
           onClick={() => navigate('menulist')}
