@@ -12,6 +12,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path='/login' element={<Login/>} />
+        <Route path='/restaurant' element={<Restaurant/>} />
         <Route path="mypage" element={<RootMyPage />}>
           <Route index element={<MyPage />} />
           <Route path="qr" element={<QrPage />} />
