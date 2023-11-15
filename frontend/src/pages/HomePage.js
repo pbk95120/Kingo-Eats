@@ -2,7 +2,7 @@ import TestComponent from '../components/Test/TestComponenet';
 
 const HomePage = () => {
   return (
-    <main className="bg-backgroundgray h-screen">
+    <main className="bg-backgroundgray h-812">
       <section>
         <TestComponent />
       </section>

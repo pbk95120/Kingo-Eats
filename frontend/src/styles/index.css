@@ -28,11 +28,26 @@ html {
     'Segoe UI Emoji',
     'Segoe UI Symbol',
     sans-serif;
+  background-color: black;
+  height: 100%;
+  width: 100%;
 }
 
 body {
   margin: 0;
+  padding: 0;
   line-height: inherit;
+  width: 375px;
+  height: 812px;
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  transform: translate(-50%);
+}
+
+.backgound {
+  background-color: gray;
+  height: 875px;
 }
 
 h1,

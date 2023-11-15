@@ -15,6 +15,9 @@ module.exports = {
         lightgreen: '#eaf5e7',
         gold: '#e48700',
       },
+      height: {
+        812: '50.75rem',
+      },
     },
   },
   plugins: [],
