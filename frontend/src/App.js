@@ -6,6 +6,9 @@ import MenuListPage from './mypage/subpage/MenuList';
 import CardPage from './mypage/subpage/Card';
 import HistoryPage from './mypage/subpage/History';
 import RootMyPage from './mypage/index';
+import Login from './pages/Login';
+import Restaurant from './pages/Restaurant';
+
 
 function App() {
   return (
