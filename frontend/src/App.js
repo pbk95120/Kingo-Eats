@@ -15,6 +15,7 @@ import MenuPaymentPage from "./pages/MenuPaymentPage";
 import MenuQrPage from "./pages/MenuQrPage";
 import CommunityPage from './pages/community';
 import WritePage from './pages/write';
+import DetailPage from './pages/detailwrite';
 
 
 function App() {
@@ -31,7 +32,7 @@ function App() {
         <Route path="/recommand" element={<RecommandPage />} />
         <Route path='/community' element={<CommunityPage/>} />
         <Route path='/write' element={<WritePage/>} />
-        
+        <Route path='/detail' element={<DetailPage/>} />
         <Route path="mypage" element={<RootMyPage />}>
           <Route index element={<MyPage />} />
           <Route path="qr" element={<QrPage />} />

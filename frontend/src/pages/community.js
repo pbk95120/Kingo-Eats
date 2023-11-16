@@ -1,19 +1,26 @@
 // CommunityPage.js
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Title from '../components/common/Title';
 import Nav from '../components/Nav';
 
 const CommunityPage = () => {
   const navigate = useNavigate();
-
   const [posts, setPosts] = useState([]);
+  const containerRef = useRef();
 
   useEffect(() => {
     // localStorage에서 데이터 불러오기
     const savedData = JSON.parse(localStorage.getItem('communityData')) || [];
     setPosts(savedData);
   }, []);
+
+  const handlePostClick = (post) => {
+    // 클릭한 게시글의 정보를 localStorage에 저장
+    localStorage.setItem('selectedPost', JSON.stringify(post));
+    // "/detailwrite"로 이동
+    navigate('/detail');
+  };
 
   return (
     <main>
@@ -28,10 +35,29 @@ const CommunityPage = () => {
             top: 675px;
             cursor: pointer;
           }
+          .posts-container {
+            height: 590px;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #C5E1A5 #EAF5E7;
+            max-height: 700px; /* 스크롤 바의 최대 높이 */
+            min-height: 200px;
+            
+          }
+          .posts-container::-webkit-scrollbar {
+            width: 6px;
+          }
+          .posts-container::-webkit-scrollbar-thumb {
+            background-color: #C5E1A5;
+            border-radius: 4px;
+          }
+          .posts-container::-webkit-scrollbar-track {
+            background-color: #EAF5E7;
+          }
           .post-container {
             margin: 20px;
             padding: 10px;
-            height : 100px;
+            height: 100px;
             background-color: white;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -40,30 +66,28 @@ const CommunityPage = () => {
             align-items: center;
           }
           .post-image {
-            width: 70px; /* 이미지 너비 조절 */
-            height: 70px; /* 이미지 높이 조절 */
-            border-radius: 10px; /* 이미지 테두리 둥글게 조절 */
+            width: 70px;
+            height: 70px;
+            border-radius: 10px;
           }
-          
+
           .post-content {
             margin-left: 10px;
-            font-size : 15px;
+            font-size: 15px;
             flex-grow: 1;
-            font-family : pretendard;
-            
+            font-family: pretendard;
           }
           .post-content p {
-            margin-bottom : 5px;
+            margin-bottom: 5px;
           }
-          .name{
-            font-weight : bold;
-            
+          .name {
+            font-weight: bold;
           }
           .post-actions {
             display: flex;
             align-items: flex-end;
-            justify-content: space-between; /* 수정: 두 아이콘을 좌우로 배치 */
-            margin-top: 60px; /* 수정: 상단 여백 추가 */
+            justify-content: space-between;
+            margin-top: 60px;
           }
           .heart-icon,
           .comment-icon {
@@ -72,9 +96,9 @@ const CommunityPage = () => {
             cursor: pointer;
             margin-left: 10px;
           }
-          .post-actions div{
+          .post-actions div {
             margin-left: 10px;
-            font-size : 12px;
+            font-size: 12px;
           }
         `}
       </style>
@@ -82,34 +106,44 @@ const CommunityPage = () => {
         <Title title={<img src={process.env.PUBLIC_URL + '/images/Q&A.svg'} alt="Q&A" />} />
 
         {/* 글 목록 */}
-        {posts.map((post, index) => (
-          <div key={index} className="post-container">
-            <div className="post-image">
-              <img
-                src={post.user_name === "익명" ? process.env.PUBLIC_URL + '/images/성균관대학교.svg' : process.env.PUBLIC_URL + '/images/율전이.svg'}
-                alt={post.user_name === "익명" ? "성균관대학교" : "율전이"}
-              />
+        <div className="posts-container" ref={containerRef}>
+          {posts.map((post, index) => (
+            <div 
+              key={index} 
+              className="post-container"
+              onClick={() => handlePostClick(post)}
+            >
+              <div className="post-image">
+                <img
+                  src={
+                    post.user_name === '익명'
+                      ? process.env.PUBLIC_URL + '/images/성균관대학교.svg'
+                      : process.env.PUBLIC_URL + '/images/율전이.svg'
+                  }
+                  alt={post.user_name === '익명' ? '성균관대학교' : '율전이'}
+                />
+              </div>
+              <div className="post-content">
+                <p className="name">{post.user_name}</p>
+                <p>{post.content}</p>
+              </div>
+              <div className="post-actions">
+                <img
+                  className="heart-icon"
+                  src={process.env.PUBLIC_URL + '/images/하트.svg'}
+                  alt="Heart Icon"
+                />
+                <div>0</div>
+                <img
+                  className="comment-icon"
+                  src={process.env.PUBLIC_URL + '/images/댓글.svg'}
+                  alt="Comment Icon"
+                />
+                <div>0</div>
+              </div>
             </div>
-            <div className="post-content">
-              <p className= "name">{post.user_name}</p>
-              <p>{post.content}</p>
-            </div>
-            <div className="post-actions">
-              <img
-                className="heart-icon"
-                src={process.env.PUBLIC_URL + '/images/하트.svg'}
-                alt="Heart Icon"
-              />
-              <div>0</div>
-              <img
-                className="comment-icon"
-                src={process.env.PUBLIC_URL + '/images/댓글.svg'}
-                alt="Comment Icon"
-              />
-              <div>0</div>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
 
         {/* 글 작성 버튼 */}
         <img
