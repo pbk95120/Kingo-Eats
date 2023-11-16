@@ -11,6 +11,8 @@ import Restaurant from "./pages/Restaurant";
 import RecommandPage from "./pages/RecommandPage";
 import MenuPage from "./pages/MenuPage";
 import MenuDetailPage from "./pages/MenuDetailPage";
+import MenuPaymentPage from "./pages/MenuPaymentPage";
+import MenuQrPage from "./pages/MenuQrPage";
 
 function App() {
   return (
@@ -21,7 +23,8 @@ function App() {
         <Route path="/restaurant" element={<Restaurant />} />
         <Route path="/menu" element={<MenuPage />} />
         <Route path="/menu/:id" element={<MenuDetailPage />} />
-
+        <Route path="/menu/payment" element={<MenuPaymentPage />} />
+        <Route path="/menu/qr" element={<MenuQrPage />} />
         <Route path="/recommand" element={<RecommandPage />} />
         <Route path="mypage" element={<RootMyPage />}>
           <Route index element={<MyPage />} />

@@ -46,7 +46,7 @@ const MenuDetail = () => {
         </div>
         <p className="text-sm text-textdark m-0 pl-4 pb-3">음식이 맛있는데 양이 적어요.</p>
         <div className="pl-3">
-          <Btn text="구매하기" url="/menu/:id/payment"></Btn>
+          <Btn text="구매하기" url="/menu/payment"></Btn>
         </div>
       </div>
     </section>
