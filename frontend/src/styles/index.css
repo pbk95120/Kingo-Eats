@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css');
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
 
 *,
 ::before,
@@ -9,25 +9,25 @@
   box-sizing: border-box;
   border-width: 0;
   border-style: solid;
-}
-
-html {
-  tab-size: 4;
   font-family:
-    Pretendard,
+    pretendard,
     -apple-system,
     BlinkMacSystemFont,
     system-ui,
     Roboto,
-    'Helvetica Neue',
-    'Segoe UI',
-    'Apple SD Gothic Neo',
-    'Noto Sans KR',
-    'Malgun Gothic',
-    'Apple Color Emoji',
-    'Segoe UI Emoji',
-    'Segoe UI Symbol',
+    "Helvetica Neue",
+    "Segoe UI",
+    "Apple SD Gothic Neo",
+    "Noto Sans KR",
+    "Malgun Gothic",
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol",
     sans-serif;
+}
+
+html {
+  tab-size: 4;
   background-color: black;
   height: 100%;
   width: 100%;
