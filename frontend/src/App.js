@@ -29,6 +29,8 @@ function App() {
         <Route path="/menu/payment" element={<MenuPaymentPage />} />
         <Route path="/menu/qr" element={<MenuQrPage />} />
         <Route path="/recommand" element={<RecommandPage />} />
+        <Route path='/community' element={<CommunityPage/>} />
+        <Route path='/write' element={<WritePage/>} />
         
         <Route path="mypage" element={<RootMyPage />}>
           <Route index element={<MyPage />} />
