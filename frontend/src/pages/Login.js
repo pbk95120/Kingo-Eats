@@ -1,4 +1,4 @@
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 const Login = () => {
@@ -30,15 +30,15 @@ const Login = () => {
         </div>
         <div className="items-center" style={{marginTop:"50px"}} >
             <h4 style={{fontWeight:"bold",fontSize:"14px"}}>KINGO ID</h4>
-            <input id="kingoId" style={{fontSize:"14px", padding:"10px",marginTop:"10px",fontSize:"20px",minWidth:"100%", minHeight:"30px", textAlign:"start", color:"black" , border:"1.5px solid #4CAF50", borderRadius:"5px"}} type="text" name="kingoId" placeholder="User name or email address"/>        
+            <input id="kingoId" style={{fontSize:"14px", padding:"10px",marginTop:"10px",minWidth:"100%", minHeight:"30px", textAlign:"start", color:"black" , border:"1.5px solid #4CAF50", borderRadius:"5px"}} type="text" name="kingoId" placeholder="User name or email address"/>        
         </div>
         
         <div className="items-center" style={{marginTop:"50px"}} >
             <h4 style={{fontWeight:"bold",fontSize:"14px"}}>Password</h4>
-            <input id="password" style={{fontSize:"14px", padding:"10px",marginTop:"10px",fontSize:"20px",minWidth:"100%", minHeight:"30px", textAlign:"start", color:"black" , border:"1.5px solid #4CAF50", borderRadius:"5px"}} type="password" name="password" placeholder="Password"/>        
+            <input id="password" style={{fontSize:"14px", padding:"10px",marginTop:"10px",minWidth:"100%", minHeight:"30px", textAlign:"start", color:"black" , border:"1.5px solid #4CAF50", borderRadius:"5px"}} type="password" name="password" placeholder="Password"/>        
         </div>
         <div className="items-center" style={{marginTop:"50px", textAlign:"end"}} >
-            <h4 style={{fontWeight:"bold",fontSize:"14px"}}><a style={{color:"lightgray",textDecoration:"none"}} href="https://www.skku.edu/skku/index.do#" target="_blank">Forgot ID/Password?</a> </h4>
+            <h4 style={{fontWeight:"bold",fontSize:"14px"}}><a style={{color:"lightgray",textDecoration:"none"}} href="https://www.skku.edu/skku/index.do#" rel="noreferrer" target="_blank">Forgot ID/Password?</a> </h4>
         </div>
         <div className="items-center" style={{marginTop:"50px"}} >
         <button className="w-[343px] h-[52px] bg-green hover:shadow-md text-white font-bold rounded border-2 border-black mb-[2vh]"
