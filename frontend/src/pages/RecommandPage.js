@@ -13,7 +13,7 @@ const HomePage = () => {
         <div className="w-full h-72 mt-4 bg-white rounded"></div>
       </section>
       <section>
-        <Nav />
+        <Nav page="recommand" />
       </section>
     </main>
   );

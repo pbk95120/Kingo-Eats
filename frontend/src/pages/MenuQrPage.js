@@ -10,7 +10,7 @@ const MenuQrPage = () => {
       </section>
       <MenuQr></MenuQr>
       <section>
-        <Nav />
+        <Nav page="restaurant" />
       </section>
     </main>
   );

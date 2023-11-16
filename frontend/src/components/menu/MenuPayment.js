@@ -1,6 +1,12 @@
 import Btn from "../common/Btn";
+import { useState } from "react";
 
 const MenuPayment = () => {
+  const [activeButton, setActiveButton] = useState(null);
+  const handleButtonClick = (buttonName) => {
+    setActiveButton(buttonName);
+  };
+
   return (
     <section>
       <div className="bg-white rounded mt-12 pb-4">
@@ -17,12 +23,40 @@ const MenuPayment = () => {
       <div className="bg-white rounded mt-10 pb-4">
         <p className="text-2xl text-textdark font-bold m-0 px-3 py-3">결제 방법</p>
         <div className="px-3">
-          <button className="w-full border-2 py-2 rounded">빠른카드결제</button>
+          <button
+            className={`w-full border-2 py-2 rounded ${activeButton === "card" ? "bg-green text-white" : ""}`}
+            onClick={() => {
+              handleButtonClick("card");
+            }}
+          >
+            빠른카드결제
+          </button>
         </div>
         <div className="width-100% px-3 py-3 flex gap-3">
-          <button className="w-full border-2 py-2 rounded">네이버페이</button>
-          <button className="w-full border-2 py-2 rounded">카카오페이</button>
-          <button className="w-full border-2 py-2 rounded">페이코</button>
+          <button
+            className={`w-full border-2 py-2 rounded ${activeButton === "naver" ? "bg-green text-white" : ""}`}
+            onClick={() => {
+              handleButtonClick("naver");
+            }}
+          >
+            네이버페이
+          </button>
+          <button
+            className={`w-full border-2 py-2 rounded ${activeButton === "kakao" ? "bg-green text-white" : ""}`}
+            onClick={() => {
+              handleButtonClick("kakao");
+            }}
+          >
+            카카오페이
+          </button>
+          <button
+            className={`w-full border-2 py-2 rounded ${activeButton === "payco" ? "bg-green text-white" : ""}`}
+            onClick={() => {
+              handleButtonClick("payco");
+            }}
+          >
+            페이코
+          </button>
         </div>
         <div className="px-3">
           <Btn text="결제하기" url="/menu/qr"></Btn>

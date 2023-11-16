@@ -7,7 +7,10 @@ const MenuDetail = () => {
   return (
     <section>
       <div className="bg-white rounded mb-2">
-        <img src={process.env.PUBLIC_URL + "/images/학식1.svg"} className="mt-2 w-full h-52 object-cover rounded" />
+        <img
+          src={process.env.PUBLIC_URL + "/images/학식1.svg"}
+          className="mt-3 w-11/12 mx-auto h-52 object-cover rounded"
+        />
         <p className="text-sm text-textdark m-0 pl-4 pt-2.5">학생회관</p>
         <div className="flex justify-between items-center">
           <p className="text-2xl font-bold text-textdark m-0 pl-4">야채비빔밥</p>

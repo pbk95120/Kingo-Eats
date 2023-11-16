@@ -10,7 +10,7 @@ const MenuPaymentPage = () => {
       </section>
       <MenuPayment></MenuPayment>
       <section>
-        <Nav />
+        <Nav page="restaurant" />
       </section>
     </main>
   );
