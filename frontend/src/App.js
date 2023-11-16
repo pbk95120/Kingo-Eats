@@ -8,7 +8,8 @@ import HistoryPage from './mypage/subpage/History';
 import RootMyPage from './mypage/index';
 import Login from './pages/Login';
 import Restaurant from './pages/Restaurant';
-
+import CommunityPage from './pages/community';
+import WritePage from './pages/write';
 
 function App() {
   return (
@@ -17,6 +18,8 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path='/login' element={<Login/>} />
         <Route path='/restaurant' element={<Restaurant/>} />
+        <Route path='/community' element={<CommunityPage/>} />
+        <Route path='/write' element={<WritePage/>} />
         <Route path="mypage" element={<RootMyPage />}>
           <Route index element={<MyPage />} />
           <Route path="qr" element={<QrPage />} />
