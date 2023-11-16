@@ -9,6 +9,8 @@ import RootMyPage from "./mypage/index";
 import Login from "./pages/Login";
 import Restaurant from "./pages/Restaurant";
 import RecommandPage from "./pages/RecommandPage";
+import MenuPage from "./pages/MenuPage";
+import MenuDetailPage from "./pages/MenuDetailPage";
 
 function App() {
   return (
@@ -17,6 +19,9 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/restaurant" element={<Restaurant />} />
+        <Route path="/menu" element={<MenuPage />}>
+          <Route path=":id" element={<MenuDetailPage />} />
+        </Route>
         <Route path="/recommand" element={<RecommandPage />} />
         <Route path="mypage" element={<RootMyPage />}>
           <Route index element={<MyPage />} />
@@ -29,5 +34,5 @@ function App() {
     </BrowserRouter>
   );
 }
-// 안돼
+
 export default App;
