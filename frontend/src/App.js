@@ -12,11 +12,11 @@ import RecommandPage from "./pages/RecommandPage";
 import MenuPage from "./pages/MenuPage";
 import MenuDetailPage from "./pages/MenuDetailPage";
 import MenuPaymentPage from "./pages/MenuPaymentPage";
+import MenuPasswordPage from "./pages/MenuPasswordPage";
 import MenuQrPage from "./pages/MenuQrPage";
-import CommunityPage from './pages/community';
-import WritePage from './pages/write';
-import DetailPage from './pages/detailwrite';
-
+import CommunityPage from "./pages/community";
+import WritePage from "./pages/write";
+import DetailPage from "./pages/detailwrite";
 
 function App() {
   return (
@@ -27,12 +27,13 @@ function App() {
         <Route path="/restaurant" element={<Restaurant />} />
         <Route path="/menu" element={<MenuPage />} />
         <Route path="/menu/:id" element={<MenuDetailPage />} />
-        <Route path="/menu/payment" element={<MenuPaymentPage />} />
+        <Route path="/menu/:id/payment" element={<MenuPaymentPage />} />
+        <Route path="/menu/:id/password" element={<MenuPasswordPage />} />
         <Route path="/menu/qr" element={<MenuQrPage />} />
         <Route path="/recommand" element={<RecommandPage />} />
-        <Route path='/community' element={<CommunityPage/>} />
-        <Route path='/write' element={<WritePage/>} />
-        <Route path='/detail' element={<DetailPage/>} />
+        <Route path="/community" element={<CommunityPage />} />
+        <Route path="/write" element={<WritePage />} />
+        <Route path="/detail" element={<DetailPage />} />
         <Route path="mypage" element={<RootMyPage />}>
           <Route index element={<MyPage />} />
           <Route path="qr" element={<QrPage />} />
