@@ -1,16 +1,16 @@
 import Title from "../components/common/Title";
 import Nav from "../components/Nav";
+import Recommand from "../components/recommand/Recommand";
+
 const HomePage = () => {
   return (
     <main className="bg-backgroundgray h-812">
       <section>
-        <Title title="오늘의 추천식당" />
+        <Title title="오늘의 추천메뉴" />
       </section>
+
       <section>
-        <img src={process.env.PUBLIC_URL + "/images/공대식당.svg"} className="mt-4 w-full h-72 object-cover rounded" />
-      </section>
-      <section>
-        <div className="w-full h-72 mt-4 bg-white rounded"></div>
+        <Recommand></Recommand>
       </section>
       <section>
         <Nav page="recommand" />

@@ -33,7 +33,6 @@ const MenuDetail = () => {
           <img src={process.env.PUBLIC_URL + "/images/추천_별.svg"} />
           <p className="text-sm text-textgray m-0">4,9</p>
         </div>
-
         <p className="text-sm text-textgray m-0 px-3 py-1">
           메뉴에 대한 설명이 들어갑니다.메뉴에 대한 설명이 들어갑니다.메뉴에 대한 설명이 들어갑니다.메뉴에 대한 설명이
           들어갑니다.메뉴에 대한 설명이 들어갑니다.메뉴에 대한 설명이 들어갑니다.메뉴에 대한 설명이 들어갑니다.메뉴에
