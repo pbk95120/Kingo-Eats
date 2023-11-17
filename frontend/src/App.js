@@ -17,6 +17,7 @@ import MenuQrPage from "./pages/MenuQrPage";
 import CommunityPage from "./pages/community";
 import WritePage from "./pages/write";
 import DetailPage from "./pages/detailwrite";
+import ReviewPage from "./mypage/subpage/Review";
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
           <Route path="menulist" element={<MenuListPage />} />
           <Route path="card" element={<CardPage />} />
           <Route path="history" element={<HistoryPage />} />
+          <Route path="review" element={<ReviewPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
