@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { BiArrowBack } from "react-icons/bi";
 import Btn from "../components/common/Btn";
@@ -11,13 +11,33 @@ export default function Mypage() {
   };
   const navigate = useNavigate();
   const { setTitle } = useContext(TitleContext);
+  const [name, setName] = useState(user.username);
+  const [edit, setEdit] = useState(false);
   setTitle("");
+  const handleInputChange = (e) => {
+    setName(e.target.value);
+  };
   return (
     <div className="flex flex-col">
       <div className="flex flex-col items-center">
         <div className="flex justify-center items-center gap-2 my-3">
-          <span className="text-2xl">{user.username}</span>
-          <img src={process.env.PUBLIC_URL + "/images/edit.svg"} alt="edit" />
+          {edit ? (
+            <input
+              type="text"
+              value={name}
+              onChange={handleInputChange}
+              autoFocus
+              className="text-2xl text-center w-2/4 font-thin border-none bg-transparent focus:outline-none"
+            />
+          ) : (
+            <span className="text-2xl">{name}</span>
+          )}
+          <img
+            src={process.env.PUBLIC_URL + "/images/edit.svg"}
+            alt="edit"
+            style={{ cursor: "pointer" }}
+            onClick={() => setEdit(!edit)}
+          />
         </div>
         <img
           src={process.env.PUBLIC_URL + "/images/명륜이.svg"}

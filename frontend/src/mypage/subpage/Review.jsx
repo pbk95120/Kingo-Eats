@@ -36,7 +36,7 @@ export default function Review() {
       </div>
       <input
         type="text"
-        className="font-thin text-sm m-3 w-full h- px-2 py-1 rounded "
+        className="font-thin text-sm m-3 w-full px-2 pb-[50px] border-none bg-transparent focus:outline-none"
         placeholder="음식에 대한 솔직한 리뷰를 남겨주세요."
       />
       <div className="absolute bottom-[30px] left-0 right-0 flex justify-center w-full py-4 bg-white">

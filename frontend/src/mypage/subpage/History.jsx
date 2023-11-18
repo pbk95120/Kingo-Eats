@@ -41,6 +41,7 @@ export default function History() {
             <div
               className="flex items-center"
               onClick={() => navigate("/mypage/review")}
+              style={{ cursor: "pointer" }}
             >
               <img
                 src={process.env.PUBLIC_URL + "/images/edit.svg"}

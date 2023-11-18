@@ -1,151 +1,167 @@
-import React, { useContext, useState } from "react";
-import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
-import Title from "../../components/common/Title";
+import React, { useContext, useRef, useState } from "react";
+import { FaAngleRight, FaAngleLeft } from "react-icons/fa";
 import { TitleContext } from "..";
 
 export default function Card() {
-  const card = {
-    name: "KB 국민카드",
-    image: "/images/card.svg",
+  const cardContainerRef = useRef(null);
+  const scrollRight = () => {
+    if (cardContainerRef.current) {
+      cardContainerRef.current.scrollLeft += 340;
+    }
   };
-  const [showModal, setShowModal] = useState(false);
+  const scrollLeft = () => {
+    if (cardContainerRef.current) {
+      cardContainerRef.current.scrollLeft -= 340;
+    }
+  };
   const [cardNumber, setCardNumber] = useState("");
   const [expiryMonth, setExpiryMonth] = useState("");
   const [expiryYear, setExpiryYear] = useState("");
   const [cvc, setCvc] = useState("");
-  const [postalCode, setPostalCode] = useState("");
+  const [password, setPassword] = useState("");
+  const [showForm, setShowForm] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log({ cardNumber, expiryMonth, expiryYear, cvc, postalCode });
+  const handleAddCardClick = () => {
+    setShowForm(!showForm);
   };
-  const handleClose = () => setShowModal(false);
-  const handleShow = () => setShowModal(true);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
+  const handleCardNumberChange = (e) => {
+    const value = e.target.value.replace(/\D/g, "");
+    const cardNumberChunks = value.match(/.{1,4}/g) || [];
+    const formattedCardNumber = cardNumberChunks.join(" ");
+    setCardNumber(formattedCardNumber);
+  };
+
+  const cards = [
+    {
+      name: "KB 국민",
+      image: "/images/card.svg",
+    },
+    {
+      name: "신한",
+      image: "/images/신한카드.png",
+    },
+  ];
+
   const { setTitle } = useContext(TitleContext);
   setTitle("결제 카드");
+
   return (
-    <div className="flex flex-col items-center">
-      <div className="flex flex-col w-[340px] bg-white p-[10px]">
-        <span className="font-bold text-2xl my-2">My 카드</span>
-        <div className="flex flex-col items-center">
-          <img src={card.image} alt="QRCODE" className="my-2" />
-          <div className="flex flex-row items-center gap-x-2">
-            <span className="font-bold">{card.name}</span>
-            <img src={process.env.PUBLIC_URL + "/images/edit.svg"} alt="edit" />
+    <>
+      <div className="flex flex-col items-center">
+        <div className="flex flex-col w-[340px] bg-white p-[10px]">
+          <span className="font-bold text-2xl my-2">My 카드</span>
+          <div className="flex flex-col items-center">
+            <div
+              className="flex flex-row items-center gap-x-2 overflow-x-auto"
+              ref={cardContainerRef}
+            >
+              {cards.map((card, index) => (
+                <div
+                  key={index}
+                  className="flex flex-col items-center flex-shrink-0 w-full py-3"
+                >
+                  <img
+                    src={card.image}
+                    alt="Card"
+                    className="my-2 w-[283px] h-[178px]"
+                  />
+                  <div className="flex flex-row items-center">
+                    <span className="font-bold">{card.name}</span>
+                    <img
+                      src={process.env.PUBLIC_URL + "/images/edit.svg"}
+                      alt="Edit"
+                      className="ml-1"
+                      style={{ cursor: "pointer" }}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="flex flex-row justify-between w-1/4 mt-3">
+              <FaAngleLeft
+                size={24}
+                onClick={() => scrollLeft()}
+                style={{ cursor: "pointer" }}
+              />
+              <FaAngleRight
+                size={24}
+                onClick={() => scrollRight()}
+                style={{ cursor: "pointer" }}
+              />
+            </div>
+          </div>
+          {showForm && (
+            <form
+              onSubmit={handleSubmit}
+              className="flex flex-col space-y-4 max-w-md mt-3"
+            >
+              <label>
+                카드 번호:
+                <input
+                  type="text"
+                  value={cardNumber}
+                  onChange={handleCardNumberChange}
+                  maxLength="19" // 16자리 숫자 + 3개의 공백
+                  placeholder="카드 번호 입력"
+                  className="form-input ml-3"
+                />
+              </label>
+              <label>
+                유효 기간:
+                <input
+                  type="text"
+                  value={expiryMonth}
+                  onChange={(e) => setExpiryMonth(e.target.value)}
+                  maxLength="2"
+                  placeholder="MM"
+                  className="form-input w-1/6 ml-3"
+                />
+                <input
+                  type="text"
+                  value={expiryYear}
+                  onChange={(e) => setExpiryYear(e.target.value)}
+                  maxLength="2"
+                  placeholder="YY"
+                  className="form-input w-1/6 ml-1"
+                />
+              </label>
+              <label>
+                CVC:
+                <input
+                  type="text"
+                  value={cvc}
+                  onChange={(e) => setCvc(e.target.value)}
+                  maxLength="3"
+                  placeholder="CVC"
+                  className="form-input ml-3"
+                />
+              </label>
+              <label>
+                간편결제번호:
+                <input
+                  type="text"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  maxLength="6"
+                  placeholder="간편결제번호"
+                  className="form-input ml-3"
+                />
+              </label>
+            </form>
+          )}
+          <div className="absolute bottom-[70px] left-0 right-0 flex justify-center w-full py-4 bg-white">
+            <button
+              className="w-[327px] h-[60px] bg-green hover:shadow-md text-white font-bold rounded"
+              onClick={() => handleAddCardClick()}
+            >
+              {showForm ? "카드 저장" : "카드 추가"}
+            </button>
           </div>
         </div>
-        <div className="flex justify-center my-4">
-          <button
-            className="w-[327px] h-[60px] bg-green hover:shadow-md text-white font-bold rounded"
-            onClick={() => handleShow()}
-          >
-            결제 카드 추가
-          </button>
-          <Modal
-            show={showModal}
-            onHide={handleClose}
-            className="w-[50%] h-[50%]"
-          >
-            <Modal.Header closeButton>
-              <Modal.Title>결제 카드 추가</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              <form onSubmit={handleSubmit} className="w-full">
-                <div className="mb-6">
-                  <label
-                    htmlFor="cardNumber"
-                    className="block text-gray-700 text-sm font-bold mb-2"
-                  >
-                    카드 번호
-                  </label>
-                  <input
-                    type="text"
-                    id="cardNumber"
-                    value={cardNumber}
-                    onChange={(e) => setCardNumber(e.target.value)}
-                    placeholder="____ ____ ____ ____"
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  />
-                </div>
-
-                <div className="mb-6 flex -mx-2">
-                  <div className="px-2 w-1/2">
-                    <label
-                      htmlFor="expiryMonth"
-                      className="block text-gray-700 text-sm font-bold mb-2"
-                    >
-                      만료일
-                    </label>
-                    <input
-                      type="text"
-                      id="expiryMonth"
-                      value={expiryMonth}
-                      onChange={(e) => setExpiryMonth(e.target.value)}
-                      placeholder="MM"
-                      className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    />
-                  </div>
-                  <div className="px-2 w-1/2">
-                    <label
-                      htmlFor="expiryYear"
-                      className="block text-gray-700 text-sm font-bold mb-2"
-                    ></label>
-                    <input
-                      type="text"
-                      id="expiryYear"
-                      value={expiryYear}
-                      onChange={(e) => setExpiryYear(e.target.value)}
-                      placeholder="YY"
-                      className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    />
-                  </div>
-                </div>
-
-                <div className="mb-6">
-                  <label
-                    htmlFor="cvc"
-                    className="block text-gray-700 text-sm font-bold mb-2"
-                  >
-                    보안코드(CVC/CVV)
-                  </label>
-                  <input
-                    type="text"
-                    id="cvc"
-                    value={cvc}
-                    onChange={(e) => setCvc(e.target.value)}
-                    placeholder="___"
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  />
-                </div>
-
-                <div className="mb-6">
-                  <label
-                    htmlFor="postalCode"
-                    className="block text-gray-700 text-sm font-bold mb-2"
-                  >
-                    결제비밀번호(6자리)
-                  </label>
-                  <input
-                    type="text"
-                    id="postalCode"
-                    value={postalCode}
-                    onChange={(e) => setPostalCode(e.target.value)}
-                    placeholder="______"
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  />
-                </div>
-              </form>
-            </Modal.Body>
-            <Modal.Footer>
-              <Button variant="primary" onClick={handleClose}>
-                저장하기
-              </Button>
-            </Modal.Footer>
-          </Modal>
-        </div>
-        <div className="flex justify-center"></div>
       </div>
-    </div>
+    </>
   );
 }
