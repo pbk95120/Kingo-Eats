@@ -14,6 +14,17 @@ const WritePage = () => {
 
   const handleCompleteButtonClick = () => {
     // "/community"로 이동하면서 데이터 전달
+    const currentDate = new Date();
+    const year = currentDate.getFullYear();
+    const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+    const day = String(currentDate.getDate()).padStart(2, '0');
+    const hours = String(currentDate.getHours()).padStart(2, '0');
+    const minutes = String(currentDate.getMinutes()).padStart(2, '0');
+
+    // 현재 시간을 원하는 형식으로 조합
+    const currentTime = `${year}.${month}.${day} ${hours}:${minutes}`;
+
+
     if (!title || !content) {
       alert('제목과 내용을 입력해주세요.');
       return;
@@ -21,7 +32,7 @@ const WritePage = () => {
 
     // 데이터를 localStorage에 저장
     const savedData = JSON.parse(localStorage.getItem('communityData')) || [];
-    savedData.push({ title, content, user_name});
+    savedData.push({ title, content, user_name, timestamp: currentTime});
     localStorage.setItem('communityData', JSON.stringify(savedData));
 
     // 글 작성 후 입력창 초기화
@@ -115,6 +126,7 @@ const WritePage = () => {
         </div>
 
         <div className="divider" />
+        
 
         {/* 내용 입력란 */}
         <div className="input-container">

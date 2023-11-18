@@ -8,18 +8,31 @@ const CommunityPage = () => {
   const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
   const containerRef = useRef();
+  
+  // const [heartValue, setHeartValue] = useState(Number(localStorage.getItem('heartValue')) || 0);
 
   useEffect(() => {
     // localStorage에서 데이터 불러오기
     const savedData = JSON.parse(localStorage.getItem('communityData')) || [];
     setPosts(savedData);
+
+    // setHeartValue(Number(localStorage.getItem('heartValue')) || 0);
   }, []);
 
-  const handlePostClick = (post) => {
-    // 클릭한 게시글의 정보를 localStorage에 저장
-    localStorage.setItem('selectedPost', JSON.stringify(post));
-    // "/detailwrite"로 이동
-    navigate('/detail');
+  const handlePostClick = (index) => {
+      // 클릭한 게시글의 정보를 localStorage에 저장
+    
+      if (posts[index]) {
+        // 클릭한 게시글의 정보를 localStorage에 저장
+        const postId = index + 1; // 클릭한 게시글의 인덱스를 1부터 시작하는 숫자로 변환
+        localStorage.setItem('selectedPostId', postId);
+        console.log(localStorage.getItem('selectedPostId'));
+
+        const selectedPost = posts[index];
+        localStorage.setItem('selectedPost', JSON.stringify(selectedPost));
+        // "/detailwrite"로 이동
+        navigate('/detail');
+      }
   };
 
   return (
@@ -107,11 +120,16 @@ const CommunityPage = () => {
 
         {/* 글 목록 */}
         <div className="posts-container" ref={containerRef}>
-          {posts.map((post, index) => (
+        {posts.map((post, index) => {
+          // 해당 포스트의 heartValue 가져오기
+          const postHeartValue = localStorage.getItem(`post_${index + 1}`) ? JSON.parse(localStorage.getItem(`post_${index + 1}`)).heartValue : 0;
+          const postCommentsLength = localStorage.getItem(`post_${index + 1}`) ? JSON.parse(localStorage.getItem(`post_${index + 1}`)).comments?.length || 0 : 0;
+
+          return (
             <div 
               key={index} 
               className="post-container"
-              onClick={() => handlePostClick(post)}
+              onClick={() => handlePostClick(index)}
             >
               <div className="post-image">
                 <img
@@ -125,7 +143,7 @@ const CommunityPage = () => {
               </div>
               <div className="post-content">
                 <p className="name">{post.user_name}</p>
-                <p>{post.content}</p>
+                <p>{post.title}</p>
               </div>
               <div className="post-actions">
                 <img
@@ -133,17 +151,18 @@ const CommunityPage = () => {
                   src={process.env.PUBLIC_URL + '/images/하트.svg'}
                   alt="Heart Icon"
                 />
-                <div>0</div>
+                <div className="heart-value">{postHeartValue}</div>
                 <img
                   className="comment-icon"
                   src={process.env.PUBLIC_URL + '/images/댓글.svg'}
                   alt="Comment Icon"
                 />
-                <div>0</div>
+                <div>{postCommentsLength}</div>
               </div>
             </div>
-          ))}
-        </div>
+          );
+        })}
+      </div>
 
         {/* 글 작성 버튼 */}
         <img
