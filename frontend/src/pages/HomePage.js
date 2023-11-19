@@ -1,6 +1,6 @@
-import TestComponent from '../components/Test/TestComponenet';
-import Title from '../components/common/Title';
-import Nav from '../components/Nav';
+import TestComponent from "../components/Test/TestComponenet";
+import Title from "../components/common/Title";
+import Nav from "../components/Nav";
 
 const HomePage = () => {
   return (
