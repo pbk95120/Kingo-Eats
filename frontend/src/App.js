@@ -18,7 +18,7 @@ import CommunityPage from "./pages/community";
 import WritePage from "./pages/write";
 import DetailPage from "./pages/detailwrite";
 import ReviewPage from "./mypage/subpage/Review";
-
+import LikeMenuPage from "./mypage/subpage/LikeMenu";
 function App() {
   return (
     <BrowserRouter>
@@ -41,6 +41,7 @@ function App() {
           <Route path="card" element={<CardPage />} />
           <Route path="history" element={<HistoryPage />} />
           <Route path="review" element={<ReviewPage />} />
+          <Route path="likemenu" element={<LikeMenuPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
