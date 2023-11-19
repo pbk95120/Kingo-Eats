@@ -8,7 +8,6 @@ const HomePage = () => {
       <section>
         <Title title="오늘의 추천메뉴" />
       </section>
-
       <section>
         <Recommand></Recommand>
       </section>
