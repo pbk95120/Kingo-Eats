@@ -43,7 +43,7 @@ const Restaurant = () => {
 
             <img style={{width:"100%", margin:"5px"}} src={process.env.PUBLIC_URL + rimage} alt="res1" />
             <button className="w-[343px] h-[52px] bg-green hover:shadow-md text-white font-bold rounded border-2 border-black mb-[2vh]"
-                    onClick={() => navigate('/',{state:rest})}>식권 구매</button>         
+                    onClick={() => navigate('/menu',{state:rest})}>식권 구매</button>         
             </div>
       </section>
     </main>

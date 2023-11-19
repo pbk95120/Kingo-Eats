@@ -42,7 +42,9 @@ export default function Review() {
       <div className="absolute bottom-[30px] left-0 right-0 flex justify-center w-full py-4 bg-white">
         <button
           className="w-[327px] h-[60px] bg-green hover:shadow-md text-white font-bold rounded"
-          onClick={() => navigate(-1)}
+          onClick={() => {
+            navigate(-1);
+          }}
         >
           작성
         </button>

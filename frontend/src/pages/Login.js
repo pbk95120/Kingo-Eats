@@ -6,7 +6,7 @@ const Login = () => {
   const onClick = (event) => {
     var id = document.getElementById('kingoId');
     var pwd = document.getElementById('password');
-    if(id.value === "Team11" && pwd.value==="12345"){
+    if(id.value === "won2000sw" && pwd.value==="12345"){
       var username = "율전이";
         navigate('/restaurant',{state:username});
     }
