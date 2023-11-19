@@ -4,10 +4,34 @@ import { useParams } from "react-router-dom";
 
 const MenuDetail = () => {
   const menuItemsData = [
-    { id: 1, name: "야채비빔밥", price: "4,300원", imagePath: "/images/학식1.svg", hearts: 5 },
-    { id: 2, name: "우삼겹순두부찌개", price: "5,000원", imagePath: "/images/우삼겹순두부찌개.svg", hearts: 3 },
-    { id: 3, name: "자장면", price: "5,000원", imagePath: "/images/자장면.svg", hearts: 8 },
-    { id: 4, name: "등심돈까스", price: "5,500원", imagePath: "/images/등심돈까스.svg", hearts: 2 },
+    {
+      id: 1,
+      name: "야채비빔밥",
+      price: "4,300원",
+      imagePath: "/images/학식1.svg",
+      hearts: 5,
+    },
+    {
+      id: 2,
+      name: "우삼겹순두부찌개",
+      price: "5,000원",
+      imagePath: "/images/우삼겹순두부찌개.svg",
+      hearts: 3,
+    },
+    {
+      id: 3,
+      name: "자장면",
+      price: "5,000원",
+      imagePath: "/images/자장면.svg",
+      hearts: 8,
+    },
+    {
+      id: 4,
+      name: "등심돈까스",
+      price: "5,500원",
+      imagePath: "/images/등심돈까스.svg",
+      hearts: 2,
+    },
   ];
 
   const { id } = useParams();
@@ -26,17 +50,20 @@ const MenuDetail = () => {
         />
         <p className="text-sm text-textdark m-0 pl-4 pt-2.5">학생회관</p>
         <div className="flex justify-between items-center">
-          <p className="text-2xl font-bold text-textdark m-0 pl-4">{menuItem.name}</p>
-          <p className="text-xl font-bold text-textdark m-0 pr-4">{menuItem.price}</p>
+          <p className="text-2xl font-bold text-textdark m-0 pl-4">
+            {menuItem.name}
+          </p>
+          <p className="text-xl font-bold text-textdark m-0 pr-4">
+            {menuItem.price}
+          </p>
         </div>
         <div className="flex items-center w-full justify-end pr-4">
           <img src={process.env.PUBLIC_URL + "/images/추천_별.svg"} />
           <p className="text-sm text-textgray m-0">4,9</p>
         </div>
         <p className="text-sm text-textgray m-0 px-3 py-1">
-          메뉴에 대한 설명이 들어갑니다.메뉴에 대한 설명이 들어갑니다.메뉴에 대한 설명이 들어갑니다.메뉴에 대한 설명이
-          들어갑니다.메뉴에 대한 설명이 들어갑니다.메뉴에 대한 설명이 들어갑니다.메뉴에 대한 설명이 들어갑니다.메뉴에
-          대한 설명이 들어갑니다.메뉴에 대한 설명이 들어갑니다.메뉴에 대한 설명이 들어갑니다.
+          야채 비빔밥은 한국의 전통 요리 중 하나로, 다양한 신선한 야채와 밥,
+          그리고 고추장 기반의 양념을 함께 섞어 먹는 음식입니다.
         </p>
       </div>
       <div className="bg-white rounded">
@@ -49,7 +76,10 @@ const MenuDetail = () => {
         </div>
         <div className="flex items-center pl-3 pb-1 gap-2">
           <div className="rounded-full w-18 h-18">
-            <img src={process.env.PUBLIC_URL + "/images/명륜이.svg"} className="object-cover" />
+            <img
+              src={process.env.PUBLIC_URL + "/images/명륜이.svg"}
+              className="object-cover"
+            />
           </div>
           <div className="flex-column">
             <p className="text-sm text-textdark m-0">User</p>
@@ -59,7 +89,9 @@ const MenuDetail = () => {
             </div>
           </div>
         </div>
-        <p className="text-sm text-textdark m-0 pl-4 pb-3">음식이 맛있는데 양이 적어요.</p>
+        <p className="text-sm text-textdark m-0 pl-4 pb-3">
+          음식이 맛있는데 양이 적어요.
+        </p>
         <div className="pl-3">
           <Btn text="구매하기" url={"/menu/" + id + "/payment"}></Btn>
         </div>
