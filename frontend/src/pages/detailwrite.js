@@ -58,7 +58,7 @@ const DetailPage = () => {
 
   const handleCommentSubmit = () => {
     const newComment = {
-      user_name: isCommentNonameOn ? "익명" : selectedPost.user_name,
+      user_name: isCommentNonameOn ? "익명" : "율전이",
       content: comment,
       timestamp: getCurrentTimestamp(),
       heartValue: 0,
