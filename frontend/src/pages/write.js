@@ -10,7 +10,9 @@ const WritePage = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
-  const [user_name, setUserName] = useState("익명의 율전이");
+  const [user_name, setUserName] = useState("율전이");
+
+  const [isAnonymous, setIsAnonymous] = useState(false);
 
   const handleCompleteButtonClick = () => {
     // "/community"로 이동하면서 데이터 전달
@@ -148,13 +150,13 @@ const WritePage = () => {
         />
 
         <img
-          src={process.env.PUBLIC_URL + "/images/익명.svg"}
+          src={isAnonymous ? process.env.PUBLIC_URL + "/images/익명.svg" : process.env.PUBLIC_URL + "/images/익명off.svg"}
           alt="noname Button"
           className="noname-button"
           onClick={() => {
             // 익명기능 활성화.
-            alert("익명 기능이 활성화되었습니다.");
             setUserName("익명");
+            setIsAnonymous(!isAnonymous);
           }}
         />
       </section>
