@@ -13,32 +13,34 @@ const CommunityPage = () => {
 
   useEffect(() => {
     // localStorage에서 데이터 불러오기
-    const savedData = JSON.parse(localStorage.getItem('communityData')) || [];
+    const savedData = JSON.parse(localStorage.getItem("communityData")) || [];
     if (savedData.length === 0) {
-      
       const dummyData = [
         {
-          user_name: '익명의 율전이',
-          title: '메뉴를 다양하게 해주세요!!',
-          content: '가격은 정말 좋은데.. 메뉴의 다양성이 한정적인거 같아요!! 좀 더 다양한 메뉴를 원합니다..! ㅠㅠ 음식의 맛은 좋아요!!',
+          user_name: "익명의 율전이",
+          title: "메뉴를 다양하게 해주세요!!",
+          content:
+            "가격은 정말 좋은데.. 메뉴의 다양성이 한정적인거 같아요!! 좀 더 다양한 메뉴를 원합니다..! ㅠㅠ 음식의 맛은 좋아요!!",
           timestamp: "2023.10.27 23:09",
         },
         {
-          user_name: '익명',
-          title: '식당 운영시간 개선부탁드립니다..!',
-          content: '학생식당 운영이 저녁에는 진행을 안해서 저녁 끼니 해결이 어렵습니다..ㅜ 혹시 작게나마 저녁 식사를 열 순 없을까요? 원하는 인원도 많을 것 같습니다!',
+          user_name: "익명",
+          title: "식당 운영시간 개선부탁드립니다..!",
+          content:
+            "학생식당 운영이 저녁에는 진행을 안해서 저녁 끼니 해결이 어렵습니다..ㅜ 혹시 작게나마 저녁 식사를 열 순 없을까요? 원하는 인원도 많을 것 같습니다!",
           timestamp: "2023.10.28 13:18",
         },
         {
-          user_name: '익명의 율전이',
-          title: '밥 양을 자율적으로 하게 해주세요!',
-          content: '밥 양을 받을때마다 제공해주시는 직원분에 따라 밥양이 달라져서 밥을 개인이 직접 원하는 만큼 가져갈 수 있도록 밥솥이 놓여있으면 좋겠어요!',
+          user_name: "익명의 율전이",
+          title: "밥 양을 자율적으로 하게 해주세요!",
+          content:
+            "밥 양을 받을때마다 제공해주시는 직원분에 따라 밥양이 달라져서 밥을 개인이 직접 원하는 만큼 가져갈 수 있도록 밥솥이 놓여있으면 좋겠어요!",
           timestamp: "2023.11.15 11:28",
         },
         // 필요한 만큼 더미 데이터를 추가
       ];
 
-      localStorage.setItem('communityData', JSON.stringify(dummyData));
+      localStorage.setItem("communityData", JSON.stringify(dummyData));
       setPosts(dummyData);
     } else {
       setPosts(savedData);
@@ -196,7 +198,7 @@ const CommunityPage = () => {
           }}
         />
       </section>
-      <Nav />
+      <Nav page="community" />
     </main>
   );
 };
