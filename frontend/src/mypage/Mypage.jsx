@@ -6,7 +6,7 @@ import Title from "../components/common/Title";
 import { TitleContext } from ".";
 export default function Mypage() {
   const user = {
-    username: "익명의 율전이",
+    username: "율전이",
     userinfo: "성균관대학교 자과캠 소프트웨어학과 19학번",
   };
   const navigate = useNavigate();
@@ -40,7 +40,7 @@ export default function Mypage() {
           />
         </div>
         <img
-          src={process.env.PUBLIC_URL + "/images/명륜이.svg"}
+          src={process.env.PUBLIC_URL + "/images/율전이.svg"}
           alt="이미지"
           className="w-[128px] h-[128px] rounded-full"
         />
