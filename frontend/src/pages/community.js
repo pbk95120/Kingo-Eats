@@ -15,6 +15,7 @@ const CommunityPage = () => {
     // localStorage에서 데이터 불러오기
     const savedData = JSON.parse(localStorage.getItem('communityData')) || [];
     if (savedData.length === 0) {
+      
       const dummyData = [
         {
           user_name: '익명의 율전이',
