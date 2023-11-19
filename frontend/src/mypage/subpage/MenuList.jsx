@@ -48,7 +48,7 @@ export default function MenuList() {
             <div
               className="rounded-lg"
               key={item.menu}
-              onClick={() => navigate("/menu/1")}
+              onClick={() => navigate("/mypage/likemenu")}
               style={{ cursor: "pointer" }}
             >
               <div className="w-[152px] h-[152px] rounded-lg overflow-hidden">
