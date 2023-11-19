@@ -18,7 +18,7 @@ export default function Mypage() {
     setName(e.target.value);
   };
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col w-full h-full bg-white">
       <div className="flex flex-col items-center">
         <div className="flex justify-center items-center gap-2 my-3">
           {edit ? (

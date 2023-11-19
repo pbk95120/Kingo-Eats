@@ -7,22 +7,22 @@ export default function History() {
     {
       menu: "야채비빔밥",
       price: "4300",
-      date: "2023.09.11 (금)",
-      image: "/images/작은학식.svg",
+      date: "2023.11.17 (금)",
+      image: "/images/학식1.svg",
       place: "학생회관",
     },
     {
-      menu: "야채비빔밥",
-      price: "4300",
-      date: "2023.09.11 (금)",
-      image: "/images/작은학식.svg",
+      menu: "등심돈까스",
+      price: "5500",
+      date: "2023.11.15 (수)",
+      image: "/images/학식4.svg",
       place: "학생회관",
     },
     {
-      menu: "야채비빔밥",
-      price: "4300",
-      date: "2023.09.11 (금)",
-      image: "/images/작은학식.svg",
+      menu: "짜장면",
+      price: "5000",
+      date: "2023.11.13 (월)",
+      image: "/images/학식3.svg",
       place: "학생회관",
     },
   ];
@@ -30,7 +30,7 @@ export default function History() {
   const { setTitle } = useContext(TitleContext);
   setTitle("주문 내역");
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center mt-[10px]">
       {menu.map((item, idx) => (
         <div
           className="flex flex-col w-[340px] bg-white rounded-lg p-3 mb-3"
@@ -47,11 +47,17 @@ export default function History() {
                 src={process.env.PUBLIC_URL + "/images/edit.svg"}
                 alt="edit"
               />
-              <span className="ml-2 font-light text-sm">리뷰 작성</span>
+              <span className="ml-2 font-light text-sm">후기 작성</span>
             </div>
           </div>
           <div className="flex flex-row">
-            <img src={item.image} alt={item.menu} />
+            <div className="w-[117px] h-[126px] overflow-hidden rounded-lg">
+              <img
+                src={item.image}
+                alt={item.menu}
+                className="w-full h-full object-cover"
+              />
+            </div>
             <div className="flex flex-col pl-2 gap-y-1">
               <span className="text-sm">{item.place}</span>
               <span className="text-2xl font-bold">{item.menu}</span>

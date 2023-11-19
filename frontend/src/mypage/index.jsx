@@ -9,7 +9,7 @@ const RootMyPage = () => {
   const [title, setTitle] = useState("");
   return (
     <TitleContext.Provider value={{ setTitle }}>
-      <div className="bg-backgroundgray">
+      <div className="bg-backgroundgray" style={{ borderRadius: "20px" }}>
         <Title title={title} />
         <div className="w-full h-[687.5px]">
           <Outlet />

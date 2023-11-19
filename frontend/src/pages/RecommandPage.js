@@ -4,7 +4,7 @@ import Recommand from "../components/recommand/Recommand";
 
 const HomePage = () => {
   return (
-    <main className="bg-backgroundgray h-812">
+    <main className="bg-backgroundgray h-812" style={{ borderRadius: "20px" }}>
       <section>
         <Title title="오늘의 추천메뉴" />
       </section>

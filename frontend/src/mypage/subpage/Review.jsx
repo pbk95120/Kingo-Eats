@@ -13,7 +13,7 @@ export default function Review() {
   const navigate = useNavigate();
   setTitle("리뷰 작성");
   return (
-    <div className="flex flex-col items-center relative h-full">
+    <div className="flex flex-col items-center relative h-full mt-[10px]">
       <div className="flex flex-col items-center w-full bg-white">
         <span className="font-thin text-sm mt-3">{menu.place}</span>
         <span className="font-bold text-2xl my-2">{menu.name}</span>
@@ -42,7 +42,9 @@ export default function Review() {
       <div className="absolute bottom-[30px] left-0 right-0 flex justify-center w-full py-4 bg-white">
         <button
           className="w-[327px] h-[60px] bg-green hover:shadow-md text-white font-bold rounded"
-          onClick={() => navigate(-1)}
+          onClick={() => {
+            navigate(-1);
+          }}
         >
           작성
         </button>

@@ -8,6 +8,7 @@ const Nav = (props) => {
         width: "100%",
         position: "fixed", // 화면에 고정
         bottom: 0,
+        borderRadius: "20px",
       }}
     >
       <Container>

@@ -4,7 +4,7 @@ import Nav from "../components/Nav";
 
 const MenuPasswordPage = () => {
   return (
-    <main className="bg-backgroundgray h-812">
+    <main className="bg-backgroundgray h-812" style={{ borderRadius: "20px" }}>
       <section>
         <Title title="Menu" />
       </section>
