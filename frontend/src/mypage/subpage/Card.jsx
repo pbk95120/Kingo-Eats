@@ -50,7 +50,7 @@ export default function Card() {
 
   return (
     <>
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center mt-[10px]">
         <div className="flex flex-col w-[340px] bg-white p-[10px]">
           <span className="font-bold text-2xl my-2">My 카드</span>
           <div className="flex flex-col items-center">

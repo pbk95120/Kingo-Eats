@@ -36,7 +36,7 @@ export default function MenuList() {
   const { setTitle } = useContext(TitleContext);
   setTitle("학식 LIST");
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center mt-[10px]">
       <div className="flex flex-col w-[340px] bg-white">
         <div className="flex flex-row justify-between items-center w-full h-[40px] mb-4 bg-green">
           <img src="/images/하트.svg" alt="love" className="ml-3" />
