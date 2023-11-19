@@ -30,7 +30,7 @@ export default function History() {
   const { setTitle } = useContext(TitleContext);
   setTitle("주문 내역");
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center mt-[10px]">
       {menu.map((item, idx) => (
         <div
           className="flex flex-col w-[340px] bg-white rounded-lg p-3 mb-3"
