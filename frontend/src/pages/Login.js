@@ -6,9 +6,11 @@ const Login = () => {
   const onClick = (event) => {
     var id = document.getElementById('kingoId');
     var pwd = document.getElementById('password');
-    var username = "율전이";
-    navigate('/restaurant',{state:username});
-     
+    if(id.value !="" && pwd.value !="")
+    {
+      var username = "율전이";
+      navigate('/restaurant',{state:username});
+    }     
 };
   return (
     <main className="relative flex w-11/12 my-4 mx-auto justify-center items-center bg-white">
