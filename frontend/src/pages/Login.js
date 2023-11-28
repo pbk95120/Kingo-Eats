@@ -6,17 +6,9 @@ const Login = () => {
   const onClick = (event) => {
     var id = document.getElementById('kingoId');
     var pwd = document.getElementById('password');
-    if(id.value === "won2000sw" && pwd.value==="12345"){
-      var username = "율전이";
-        navigate('/restaurant',{state:username});
-    }
-    else
-    {
-        id.value="";
-        pwd.value="";
-        alert("Wrong Id or Password");
-
-    } 
+    var username = "율전이";
+    navigate('/restaurant',{state:username});
+     
 };
   return (
     <main className="relative flex w-11/12 my-4 mx-auto justify-center items-center bg-white">
