@@ -4,7 +4,7 @@ const Recommand = () => {
   const menuItem = { id: 1, name: "야채비빔밥", price: "4,300원", imagePath: "/images/학식1.svg", hearts: 5 };
 
   return (
-    <section>
+    <>
       <img src={process.env.PUBLIC_URL + "/images/학식1.svg"} className="mt-3 w-full h-72 object-cover rounded" />
       <div className="w-full h-80 mt-4 bg-white rounded">
         <p className="text-sm text-textdark m-0 pl-5 pt-4">학생회관</p>
@@ -24,7 +24,7 @@ const Recommand = () => {
           <Btn text="구매하기" url={"/menu/1"}></Btn>
         </div>
       </div>
-    </section>
+    </>
   );
 };
 

@@ -6,7 +6,7 @@ const MenuPassword = () => {
   const navigate = useNavigate();
   useEffect(() => {
     const handleKeyDown = (event) => {
-      const isNumberKey = /^[1-9]$/.test(event.key);
+      const isNumberKey = /^[0-9]$/.test(event.key);
       const isEnterKey = event.key === "Enter";
       const isBackspaceKey = event.key === "Backspace";
 
@@ -41,7 +41,7 @@ const MenuPassword = () => {
   }, [password]);
 
   return (
-    <section>
+    <>
       <div className="w-11/12 h-148 bg-white rounded mx-auto mt-12">
         <div className="flex flex-column justify-center items-center">
           <p className="text-lg text-textdark m-0 pt-20">결제 비밀번호 입력</p>
@@ -60,7 +60,7 @@ const MenuPassword = () => {
           </div>
         </div>
       </div>
-    </section>
+    </>
   );
 };
 

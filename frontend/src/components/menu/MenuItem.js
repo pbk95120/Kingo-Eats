@@ -1,15 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
+import menuData from "../../pages/menuData";
 
 const MenuItem = () => {
-  const menuItemsData = [
-    { id: 1, name: "야채비빔밥", price: "4,300원", imagePath: "/images/학식1.svg", hearts: 5 },
-    { id: 2, name: "우삼겹순두부찌개", price: "5,000원", imagePath: "/images/학식2.svg", hearts: 3 },
-    { id: 3, name: "자장면", price: "5,000원", imagePath: "/images/학식3.svg", hearts: 8 },
-    { id: 4, name: "등심돈까스", price: "5,500원", imagePath: "/images/학식4.svg", hearts: 2 },
-  ];
-
-  const [menuItems, setMenuItems] = useState(menuItemsData);
+  const { state } = useLocation();
+  const menuList = menuData.filter((menuItem) => menuItem.restaurantType === state);
+  const [menuItems, setMenuItems] = useState(menuList);
   const [sortOn, setSortOn] = useState(false);
   const [heartStates, setHeartStates] = useState(menuItems.map(() => false));
 
@@ -20,7 +16,7 @@ const MenuItem = () => {
   };
 
   const sortDefault = () => {
-    setMenuItems(menuItemsData);
+    setMenuItems(menuList);
     setSortOn(!sortOn);
   };
 
@@ -31,7 +27,7 @@ const MenuItem = () => {
   };
 
   return (
-    <section>
+    <>
       <button className="w-11/12 m-auto mt-3 flex justify-end relative">
         <img src={process.env.PUBLIC_URL + "/images/정렬.svg"} onClick={() => setSortOn(!sortOn)} />
         {sortOn ? (
@@ -68,7 +64,7 @@ const MenuItem = () => {
           </div>
         ))}
       </div>
-    </section>
+    </>
   );
 };
 

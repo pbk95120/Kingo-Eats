@@ -1,17 +1,11 @@
 import Btn from "../common/Btn";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+import menuData from "../../pages/menuData";
 
 const MenuPayment = () => {
-  const menuItemsData = [
-    { id: 1, name: "야채비빔밥", price: "4,300원", imagePath: "/images/학식1.svg", hearts: 5 },
-    { id: 2, name: "우삼겹순두부찌개", price: "5,000원", imagePath: "/images/우삼겹순두부찌개.svg", hearts: 3 },
-    { id: 3, name: "자장면", price: "5,000원", imagePath: "/images/자장면.svg", hearts: 8 },
-    { id: 4, name: "등심돈까스", price: "5,500원", imagePath: "/images/등심돈까스.svg", hearts: 2 },
-  ];
-
   const { id } = useParams();
-  const menuItem = menuItemsData.find((item) => item.id === parseInt(id, 10));
+  const menuItem = menuData.find((item) => item.id === parseInt(id));
 
   const [activeButton, setActiveButton] = useState(null);
   const handleButtonClick = (buttonName) => {
@@ -19,13 +13,13 @@ const MenuPayment = () => {
   };
 
   return (
-    <section>
+    <>
       <div className="bg-white rounded mt-12 pb-4">
         <p className="text-2xl text-textdark font-bold m-0 px-3 py-3">상품정보</p>
         <div className="flex justify-between items-end mx-3">
-          <img src={process.env.PUBLIC_URL + "/images/학식" + id + ".svg"} className="w-40 h-40 object-cover rounded" />
+          <img src={process.env.PUBLIC_URL + menuItem.imagePath} className="w-40 h-40 object-cover rounded" />
           <div className="flex-column pr-">
-            <p className="text-m text-textdark m-0 text-right">학생회관</p>
+            <p className="text-m text-textdark m-0 text-right">{menuItem.restaurantType}</p>
             <p className="text-2xl text-textdark font-bold m-0 text-right">{menuItem.name}</p>
             <p className="text-xl text-textdark font-bold m-0 text-right">{menuItem.price}</p>
           </div>
@@ -73,7 +67,7 @@ const MenuPayment = () => {
           <Btn text="결제하기" url={"/menu/" + id + "/password"}></Btn>
         </div>
       </div>
-    </section>
+    </>
   );
 };
 
