@@ -10,7 +10,9 @@ const Restaurant = () => {
   const { state } = useLocation();
   const onSelect = (event) => {
     setRest(event.target.value);
+    localStorage.setItem("selectedRestaurant", event.target.value);
   };
+
   useEffect(() => {
     if (rest === "구시재식당") {
       setRimage("./images/구시재식당.svg");
@@ -23,6 +25,10 @@ const Restaurant = () => {
       setRestLoc("제2공학관 26동 지하1층");
     }
   }, [rest]);
+
+  useEffect(() => {
+    localStorage.setItem("selectedRestaurant", "구시재식당");
+  }, []);
 
   return (
     <main
@@ -59,7 +65,7 @@ const Restaurant = () => {
           <img style={{ width: "100%", margin: "5px" }} src={process.env.PUBLIC_URL + rimage} alt="res1" />
           <button
             className="w-[343px] h-[52px] bg-green hover:shadow-md text-white font-bold rounded border-2 border-black mb-[2vh]"
-            onClick={() => navigate("/menu", { state: rest })}
+            onClick={() => navigate("/menu")}
           >
             식권 구매
           </button>

@@ -1,17 +1,19 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 
-let currentPage = createSlice({
-  name: "page",
-  initialState: "",
+const restaurant = createSlice({
+  name: "restaurant",
+  initialState: { selectedRestaurant: "" },
   reducers: {
-    changePage(state, action) {
-      return action.payload;
+    changeRestaurant(state, action) {
+      state.selectedRestaurant = action.payload;
     },
   },
 });
 
-export let { changePage } = currentPage.actions;
+export const { changeRestaurant } = restaurant.actions;
 
 export default configureStore({
-  reducer: { currentPage: currentPage.reducer },
+  reducer: {
+    restaurant: restaurant.reducer,
+  },
 });
