@@ -1,10 +1,18 @@
 import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
-import menuData from "../../pages/menuData";
+import menuData from "../../pages/menudata";
 
 const MenuItem = () => {
   const { state } = useLocation();
-  const menuList = menuData.filter((menuItem) => menuItem.restaurantType === state);
+  const [localState, setLocalState] = useState(state);
+  useEffect(() => {
+    if (state !== null) {
+      setLocalState(state);
+    }
+  }, [state]);
+  const menuList = menuData.filter(
+    (menuItem) => menuItem.restaurantType === localState
+  );
   const [menuItems, setMenuItems] = useState(menuList);
   const [sortOn, setSortOn] = useState(false);
   const [heartStates, setHeartStates] = useState(menuItems.map(() => false));
@@ -29,7 +37,10 @@ const MenuItem = () => {
   return (
     <>
       <button className="w-11/12 m-auto mt-3 flex justify-end relative">
-        <img src={process.env.PUBLIC_URL + "/images/정렬.svg"} onClick={() => setSortOn(!sortOn)} />
+        <img
+          src={process.env.PUBLIC_URL + "/images/정렬.svg"}
+          onClick={() => setSortOn(!sortOn)}
+        />
         {sortOn ? (
           <div className="bg-white w-3/12 text-center absolute top-7  rounded">
             <ul className="p-0 m-0">
@@ -48,15 +59,31 @@ const MenuItem = () => {
         {menuItems.map((menuItem) => (
           <div key={menuItem.id} className="w-40 bg-white rounded">
             <Link to={`/menu/${menuItem.id}`}>
-              <img src={process.env.PUBLIC_URL + menuItem.imagePath} className="w-full h-40 object-cover rounded" />
+              <img
+                src={process.env.PUBLIC_URL + menuItem.imagePath}
+                className="w-full h-40 object-cover rounded"
+              />
             </Link>
-            <Link c to={`/menu/${menuItem.id}`} style={{ textDecoration: "none", color: "#2f2e36" }}>
-              <p className="text-lg text-textdark m-0 pl-2 pt-2">{menuItem.name}</p>
+            <Link
+              c
+              to={`/menu/${menuItem.id}`}
+              style={{ textDecoration: "none", color: "#2f2e36" }}
+            >
+              <p className="text-lg text-textdark m-0 pl-2 pt-2">
+                {menuItem.name}
+              </p>
             </Link>
             <div className="pb-2 flex justify-between items-center">
-              <p className="tex-sm text-textdark m-0 pl-3 font-bold">{menuItem.price}</p>
+              <p className="tex-sm text-textdark m-0 pl-3 font-bold">
+                {menuItem.price}
+              </p>
               <img
-                src={process.env.PUBLIC_URL + (heartStates[menuItem.id] ? "/images/하트.svg" : "/images/하트_off.svg")}
+                src={
+                  process.env.PUBLIC_URL +
+                  (heartStates[menuItem.id]
+                    ? "/images/하트.svg"
+                    : "/images/하트_off.svg")
+                }
                 className="w-6 mr-2"
                 onClick={() => toggleHeart(menuItem.id)}
               />

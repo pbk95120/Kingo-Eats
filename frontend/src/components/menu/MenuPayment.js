@@ -1,7 +1,7 @@
 import Btn from "../common/Btn";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import menuData from "../../pages/menuData";
+import menuData from "../../pages/menudata";
 
 const MenuPayment = () => {
   const { id } = useParams();
@@ -15,21 +15,36 @@ const MenuPayment = () => {
   return (
     <>
       <div className="bg-white rounded mt-12 pb-4">
-        <p className="text-2xl text-textdark font-bold m-0 px-3 py-3">상품정보</p>
+        <p className="text-2xl text-textdark font-bold m-0 px-3 py-3">
+          상품정보
+        </p>
         <div className="flex justify-between items-end mx-3">
-          <img src={process.env.PUBLIC_URL + menuItem.imagePath} className="w-40 h-40 object-cover rounded" />
+          <img
+            src={process.env.PUBLIC_URL + menuItem.imagePath}
+            className="w-40 h-40 object-cover rounded"
+          />
           <div className="flex-column pr-">
-            <p className="text-m text-textdark m-0 text-right">{menuItem.restaurantType}</p>
-            <p className="text-2xl text-textdark font-bold m-0 text-right">{menuItem.name}</p>
-            <p className="text-xl text-textdark font-bold m-0 text-right">{menuItem.price}</p>
+            <p className="text-m text-textdark m-0 text-right">
+              {menuItem.restaurantType}
+            </p>
+            <p className="text-2xl text-textdark font-bold m-0 text-right">
+              {menuItem.name}
+            </p>
+            <p className="text-xl text-textdark font-bold m-0 text-right">
+              {menuItem.price}
+            </p>
           </div>
         </div>
       </div>
       <div className="bg-white rounded mt-10 pb-4">
-        <p className="text-2xl text-textdark font-bold m-0 px-3 py-3">결제 방법</p>
+        <p className="text-2xl text-textdark font-bold m-0 px-3 py-3">
+          결제 방법
+        </p>
         <div className="px-3">
           <button
-            className={`w-full border-2 py-2 rounded ${activeButton === "card" ? "bg-green text-white" : ""}`}
+            className={`w-full border-2 py-2 rounded ${
+              activeButton === "card" ? "bg-green text-white" : ""
+            }`}
             onClick={() => {
               handleButtonClick("card");
             }}
@@ -39,7 +54,9 @@ const MenuPayment = () => {
         </div>
         <div className="width-100% px-3 py-3 flex gap-3">
           <button
-            className={`w-full border-2 py-2 rounded ${activeButton === "naver" ? "bg-green text-white" : ""}`}
+            className={`w-full border-2 py-2 rounded ${
+              activeButton === "naver" ? "bg-green text-white" : ""
+            }`}
             onClick={() => {
               handleButtonClick("naver");
             }}
@@ -47,7 +64,9 @@ const MenuPayment = () => {
             네이버페이
           </button>
           <button
-            className={`w-full border-2 py-2 rounded ${activeButton === "kakao" ? "bg-green text-white" : ""}`}
+            className={`w-full border-2 py-2 rounded ${
+              activeButton === "kakao" ? "bg-green text-white" : ""
+            }`}
             onClick={() => {
               handleButtonClick("kakao");
             }}
@@ -55,7 +74,9 @@ const MenuPayment = () => {
             카카오페이
           </button>
           <button
-            className={`w-full border-2 py-2 rounded ${activeButton === "payco" ? "bg-green text-white" : ""}`}
+            className={`w-full border-2 py-2 rounded ${
+              activeButton === "payco" ? "bg-green text-white" : ""
+            }`}
             onClick={() => {
               handleButtonClick("payco");
             }}
